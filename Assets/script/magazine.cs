@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class magazine : MonoBehaviour
 {
-    int i;
+    public static int inMag;
 
     float m_timer = 100;
     GameObject[] mag;
@@ -67,20 +67,24 @@ public class magazine : MonoBehaviour
         
         reTr = gauge.GetComponent<RectTransform>();
         
-
+        for(int i = 1 ; i < inMag+1; i++)
+        {
+            mag[inMag - i].GetComponent<UnityEngine.UI.Image>().enabled = false;
+        }
     }
     // Update is called once per frame
     void Update()
     {
+
         if (sousa)
         {
             if (m_reload == false)
             {
-                if (Input.GetButtonDown("Fire1") && m_timer > m_cooltime && i < 10)
+                if (Input.GetButtonDown("Fire1") && m_timer > m_cooltime && inMag < 10)
                 {
                     //Debug.Log(i);
-                    mag[i].GetComponent<UnityEngine.UI.Image>().enabled = false;
-                    i++;
+                    mag[inMag].GetComponent<UnityEngine.UI.Image>().enabled = false;
+                    inMag++;
                     m_timer = 0;
 
                 }
@@ -92,10 +96,10 @@ public class magazine : MonoBehaviour
                 {
                     tama.GetComponent<UnityEngine.UI.Image>().enabled = true;
                     m_audio.Play();
-                    i = 0;
+                    inMag = 0;
                 }
             }
-            if (i == 10)
+            if (inMag == 10)
             {
                 RELOAD.GetComponent<Text>().enabled = true;
                 if (Input.GetButtonDown("Fire1") && m_timer > m_cooltime)

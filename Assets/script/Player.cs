@@ -28,8 +28,7 @@ public class Player : MonoBehaviour
     float m_flip;
     float m_timer = 30;
     //ƒ}ƒKƒWƒ“‚Ì’†‚Ì’e”
-    int m_mag = 0;
-    public
+    public static int mag = 0;
     //ŽËŒ‚‰Â”\ƒ^ƒCƒ~ƒ“ƒO
     bool m_reload = false;
     float m_reloadtimer;
@@ -99,11 +98,11 @@ public class Player : MonoBehaviour
             //e‚ðŒ‚‚Âˆ—
             if (m_reload == false)
             {
-                if (Input.GetButtonDown("Fire1") && m_timer > m_cooltime && m_mag < 10)
+                if (Input.GetButtonDown("Fire1") && m_timer > m_cooltime && mag < 10)
                 {
                     Instantiate(m_tamaPrehub).transform.position = m_mz.position;
                     m_timer = 0;
-                    m_mag++;
+                    mag++;
                     //Debug.Log("’e‚ð‘Å‚Âˆ—");
                 }
             }
@@ -158,8 +157,8 @@ public class Player : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("start"))
             {
-                stage = GameObject.Find("stage1");
-                stageC = GameObject.Find("stage1(Clone)");
+                stage = GameObject.Find("stage");
+                stageC = GameObject.Find("stage(Clone)");
                 Destroy(stage);
                 Destroy(stageC);
                 Instantiate(NewStage).transform.position = stagePosi.position;
@@ -205,7 +204,7 @@ public class Player : MonoBehaviour
                 if (m_reloadtimer >= 45)
                 {
                     m_reload = false;
-                    m_mag = 0;
+                    mag = 0;
                     m_reloadtimer = 0;
                 }
             }
