@@ -1657,6 +1657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseCursor: 1
+  _godMode: 0
 --- !u!4 &713649278
 Transform:
   m_ObjectHideFlags: 0
@@ -1828,7 +1829,6 @@ MonoBehaviour:
   LimitSpeed: 6
   m_jump: 20
   m_cooltime: 15
-  m_reload: 0
   m_bakuha: {fileID: 530386851631741328, guid: 7d6882954e7c809408329d63be1f97ac, type: 3}
   gameoverText: {fileID: 1502759669}
   gameoverText2: {fileID: 1510223813}
