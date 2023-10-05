@@ -46,3 +46,7 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUtils.cs.meta
+Assets/Plugins/
+Assets/Resources/DOTweenSettings.asset
+Assets/Resources/

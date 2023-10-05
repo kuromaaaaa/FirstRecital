@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using DG.Tweening;
 
 public class magazine : MonoBehaviour
 {
@@ -97,6 +98,7 @@ public class magazine : MonoBehaviour
                     tama.GetComponent<UnityEngine.UI.Image>().enabled = true;
                     m_audio.Play();
                     inMag = 0;
+                    reroad();
                 }
             }
             if (inMag == 10)
@@ -125,22 +127,19 @@ public class magazine : MonoBehaviour
         {
             sousa = true;
         }
+        if(m_gaugeX == 900)
+        {
+            m_gaugeX = 0;
+            m_reload = false;
+        }
+    }
+    void reroad()
+    {
+        DOTween.To(() => m_gaugeX, x => m_gaugeX = x, 900, 1f).SetEase(Ease.Linear);
+
     }
     private void FixedUpdate()
     {
         m_timer++;
-        
-        if (m_reload == true )
-        {
-            m_gaugeX += 20;
-            //Debug.Log(m_gaugeX);
-            if(m_gaugeX >= 900)
-            {
-                m_reload=false;
-                m_gaugeX = 0;
-
-            }
-        }
-        
     }
 }
