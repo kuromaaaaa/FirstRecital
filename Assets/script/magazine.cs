@@ -36,7 +36,6 @@ public class magazine : MonoBehaviour
     [SerializeField] GameObject m_audioprefub;
     AudioSource m_audio = default;
     RectTransform reTr;
-
     void Start()
     {
          
@@ -127,16 +126,10 @@ public class magazine : MonoBehaviour
         {
             sousa = true;
         }
-        if(m_gaugeX == 900)
-        {
-            m_gaugeX = 0;
-            m_reload = false;
-        }
     }
     void reroad()
     {
-        DOTween.To(() => m_gaugeX, x => m_gaugeX = x, 900, 1f).SetEase(Ease.Linear);
-
+        var a = DOTween.To(() => m_gaugeX, x => m_gaugeX = x, 900, 1f).SetEase(Ease.Linear).onComplete = () => { m_gaugeX = 0; m_reload = false; };
     }
     private void FixedUpdate()
     {
